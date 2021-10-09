@@ -22,7 +22,7 @@
                         <% let date=new Date() %>
                             <% let today=parseInt(date.getFullYear()) %>
                                 <!-- Patient - 1 -->
-                                <% for(var i=0;i < apoint.length;i++){ %>
+                                <% for(var i=0;i < apoint.length;i++) { %>
                                     <div class="card shadow mb-4">
 
                                         <a onclick="populateRightDiv(this.id,parsed_data)" href="#collapseCardExample"
@@ -37,22 +37,104 @@
                                                 <div style="color: #111; font-weight: bold; opacity: 0.7;">
                                                     <%=apoint[i].email%>
                                                 </div>
+                                                <div style="color: #111; font-weight: bold; opacity: 0.7;">
+                                                    <%=apoint[i].doctor%>
+                                                </div>
+                                                <div style="color: #111; font-weight: bold; opacity: 0.7;">
+                                                    <%=apoint[i].msg%>
+                                                </div>
                                             </div>
-
 
                                         </a>
                                     </div>
                                     <% } %>
-
 
                     </div>
 
                 </div>
 
             </div>
+
+
+
+
+            <div class="col-lg-6">
+
+                <div class="card shadow mb-4">
+
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Patient Detailed Information</h6>
+                    </div>
+
+                    <div class="card-body details">
+
+                        <div class="tab-content">
+
+                            <div class="contain tab-pane" id="collapseCardExample">
+                                <div class="left">
+                                    <h6 id="patient_name"><b>Ninad Patil</b></h6>
+                                    <p id="address">virar</p>
+                                    <h6 id="contact"><span><i class="fas fa-tty"></i></span>123456</h6>
+                                    <h6 id="emergency_contact"><span><i class="fas fa-phone"></i></span>9876543</h6>
+                                    <div class="buttons">
+                                        <button id="age" class="btn btn-info btn-sm"
+                                            style="color: #fff !important; font-weight: bold; border-radius: 30px; padding: 5px 10px;">Age
+                                            - 18</button>
+                                        <button id="gender" class="btn btn-info btn-sm"
+                                            style="color: #fff !important; font-weight: bold; border-radius: 30px; padding: 5px 10px;">FeMale</button>
+                                    </div>
+
+                                </div>
+                                <div class="right">
+                                    <div class="box first">
+                                        <h6>Symptoms</h6>
+                                        <div id="symptoms" class="buttons">
+
+                                            <!-- <button class="specs btn btn-warning"></button> -->
+
+                                            <!-- <button class="specs btn btn-warning">Headache</button>
+                                    <button class="specs btn btn-warning">Headache</button> -->
+                                        </div>
+                                    </div>
+                                    <div class="box second">
+                                        <h6>Comorbidities</h6>
+                                        <div id="comorbidities" class="buttons">
+
+                                            <!-- <button class="spec btn "> </button> -->
+
+                                            <!-- <button class="spec btn ">High BP</button>
+                                    <button class="spec btn ">Headache</button> -->
+                                        </div>
+                                    </div>
+                                    <div class="box third">
+                                        <div class="oxygen">
+                                            <p class="oxy"><b>O<sub>2</sub> Saturation Level</b></p>
+                                            <p id="o2Level" class="oxyg"><b><big>80</big></b>
+                                            </p>
+                                        </div>
+
+                                        <button id="home_quarantine" class="btn btns ">Home Quarantine Possible</button>
+
+                                        <!-- <button class="btn btns btn-danger">Home Quarantine Not Possible</button> -->
+
+                                        <!-- <button class="btn btns btn-danger">Home Quarantine Not Possible</button> -->
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
         </div>
     </div>
-
 
 
     <%- include('partials/footer') %>
