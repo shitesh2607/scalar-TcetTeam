@@ -80,23 +80,43 @@ app.post("/signup", function (req, res) {
         return res.redirect('/');
     }
 
-    User.findOne({ email: user_email })
-        .then(user => {
-            if (user) {
+    User.findOne({ email: user_email }, function (err, foundUser) {
+        if (err) {
+            console.log(err);
+        } else {
+            if (foundUser) {
                 req.flash('error', 'User with this email already exists !!');
-                res.redirect('/');
-            }
-            else {
+                res.redirect('/login');
+            } else {
+
                 const user = new User({
                     name: user_name,
                     email: user_email,
                     password: user_password,
                 });
                 user.save();
-                req.flash("success", "Registration Successfull, Login with your email and Password !!");
                 res.redirect("/login");
             }
-        });
+        }
+    });
+
+    // User.findOne({ email: user_email })
+    //     .then(user => {
+    //         if (user) {
+    //             req.flash('error', 'User with this email already exists !!');
+    //             res.redirect('/');
+    //         }
+    //         else {
+    //             const user = new User({
+    //                 name: user_name,
+    //                 email: user_email,
+    //                 password: user_password,
+    //             });
+    //             user.save();
+    //             req.flash("success", "Registration Successfull, Login with your email and Password !!");
+    //             res.redirect("/login");
+    //         }
+    //     });
 });
 
 
@@ -114,6 +134,7 @@ app.post("/appointment", (req, res) => {
         name: req.body.name,
         email: req.body.email,
         phone: req.body.phone,
+        dept: req.body.department,
         doctor: req.body.doctor,
         date: req.body.date,
         msg: req.body.msg
@@ -126,6 +147,10 @@ app.get("/allotment", async (req, res) => {
     let apoint = await Appoint.find();
     res.render("allotment", { apoint: apoint });
 });
+
+app.get("/logout", function (req, res) {
+    res.redirect("/");
+})
 
 app.listen("3000", () => {
     console.log("server is running on port 3000");

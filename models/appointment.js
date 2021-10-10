@@ -5,6 +5,7 @@ const schema = new mongoose.Schema({
     name: String,
     email: String,
     phone: String,
+    dept: String,
     doctor: String,
     date: String,
     msg: String
